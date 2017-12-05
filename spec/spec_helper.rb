@@ -1,7 +1,7 @@
-require("rspec")
-require("pg")
-require("animal")
-require("customer")
+require('rspec')
+require('pg')
+require('animal')
+require('customer')
 
 DB = PG.connect({:dbname => "animal_shelter_test"})
 

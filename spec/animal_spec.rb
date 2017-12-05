@@ -1,6 +1,4 @@
-require("rspec")
-require("pg")
-require("animal")
+require('spec_helper')
 
 describe(Animal) do
 
