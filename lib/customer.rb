@@ -20,12 +20,17 @@ class Customer
     end
     customers
   end
-  
+
   def save
     DB.exec("INSERT INTO customers (name, phone, animal_preference, breed_preference) VALUES ('#{@name}', '#{@phone}', '#{@animal_preference}', '#{@breed_preference}');")
   end
 
   def ==(other_customer)
     (self.name.==(other_customer.name)).&(self.phone.==(other_customer.phone)).&(self.animal_preference.==(other_customer.animal_preference)).&(self.breed_preference.==(other_customer.breed_preference))
+  end
+
+  def self.sort_by_breed_preference
+    customers = self.all
+    customers.sort_by{|customer| customer.breed_preference}
   end
 end
