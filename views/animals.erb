@@ -1,0 +1,11 @@
+<h3>Animals available for adoption</h3>
+
+<% if @all_animals.any? %>
+  <ul>
+    <% @all_animals.each do |animal| %>
+      <li><%= animal.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>"There are currently no animals available"</p>
+<% end %>

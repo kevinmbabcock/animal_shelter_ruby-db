@@ -1,5 +1,4 @@
 class Customer
-  @@all_customers = []
   attr_accessor(:name, :phone, :animal_preference, :breed_preference)
 
   def initialize(attributes)
@@ -10,10 +9,23 @@ class Customer
   end
 
   def self.all
-    @@all_customers
+    returned_customers = DB.exec("SELECT * FROM customers;")
+    customers = []
+    returned_customers.each do |customer|
+      name = customer.fetch("name")
+      phone = customer.fetch("phone")
+      animal_preference = customer.fetch("animal_preference")
+      breed_preference = customer.fetch("breed_preference")
+      customers.push(Customer.new({:name => name, :phone => phone, :animal_preference => animal_preference, :breed_preference => breed_preference}))
+    end
+    customers
+  end
+  
+  def save
+    DB.exec("INSERT INTO customers (name, phone, animal_preference, breed_preference) VALUES ('#{@name}', '#{@phone}', '#{@animal_preference}', '#{@breed_preference}');")
   end
 
-  def save
-    @@all_customers.push(self)
+  def ==(other_customer)
+    (self.name.==(other_customer.name)).&(self.phone.==(other_customer.phone)).&(self.animal_preference.==(other_customer.animal_preference)).&(self.breed_preference.==(other_customer.breed_preference))
   end
 end
