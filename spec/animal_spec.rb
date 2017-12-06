@@ -47,4 +47,14 @@ describe(Animal) do
     end
   end
 
+  describe('#sort_by_date') do
+    it('re-order the list based on the date the animal was admitted') do
+      new_animal = Animal.new({:name => "Toby", :gender => "male", :date_admitted => "2017-12-01 00:00:30", :type => "dog", :breed => "golden retreiver"})
+      new_animal.save
+      new_animal2 = Animal.new({:name => "Max", :gender => "male", :date_admitted => "2017-12-01 00:00:10", :type => "dog", :breed => "wiener"})
+      new_animal2.save
+      expect(Animal.sort_by_date).to(eq([new_animal2, new_animal]))
+    end
+  end
+
 end
