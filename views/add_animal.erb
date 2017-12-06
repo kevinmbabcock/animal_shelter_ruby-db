@@ -1,0 +1,33 @@
+<h3>Please fill out the form to add an animal for adoption</h3>
+
+<form action="/animals" method="post">
+  <div class="form-group">
+    <label class="form-label" for="animalName">Add an animal to be adopted:</label>
+    <input class="form-control" id="animalName" name="animalName" type="text" placeholder="Animal Name?" autofocus>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="gender" value="male">
+      Male
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="gender" value="female">
+      Female
+    </label>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="animalType">What type of animal are you looking for?</label>
+    <input class="form-control" id="animalType" name="animalType" type="text" placeholder="ex: dog, cat" autofocus>
+  </div>
+  <div class="form=group">
+    <label class="form-label" for="animalBreed">What breed are you looking for?</label>
+    <input class="form-control" id="animalBreed" name="animalBreed" type="text" placeholder="ex: siamese, golden retreiver" autofocus>
+  </div>
+  <div class="form-group">
+    <label for="born">Date admitted:</label>
+    <input id="date_admitted" class="form-control" name="date_admitted" type="date">
+  </div>
+  <button type="submit" class="btn-primary">Add animal</button>
+</form>
