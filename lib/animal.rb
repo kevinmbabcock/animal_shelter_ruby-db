@@ -32,58 +32,22 @@ class Animal
   end
 
   def self.sort_by_breed
-    returned_animals = DB.exec("SELECT * FROM animals;")
-    animals = []
-    returned_animals.each do |animal|
-      name = animal.fetch("name")
-      gender = animal.fetch("gender")
-      date_admitted = animal.fetch("date_admitted")
-      type = animal.fetch("type")
-      breed = animal.fetch("breed")
-      animals.push(Animal.new({:name => name, :gender => gender, :date_admitted => date_admitted, :type => type, :breed => breed}))
-    end
+    animals = self.all
     animals.sort_by {|animal| animal.breed}
   end
 
   def self.sort_by_type
-    returned_animals = DB.exec("SELECT * FROM animals;")
-    animals = []
-    returned_animals.each do |animal|
-      name = animal.fetch("name")
-      gender = animal.fetch("gender")
-      date_admitted = animal.fetch("date_admitted")
-      type = animal.fetch("type")
-      breed = animal.fetch("breed")
-      animals.push(Animal.new({:name => name, :gender => gender, :date_admitted => date_admitted, :type => type, :breed => breed}))
-    end
+    animals = self.all
     animals.sort_by {|animal| animal.type}
   end
 
   def self.sort_by_name
-    returned_animals = DB.exec("SELECT * FROM animals;")
-    animals = []
-    returned_animals.each do |animal|
-      name = animal.fetch("name")
-      gender = animal.fetch("gender")
-      date_admitted = animal.fetch("date_admitted")
-      type = animal.fetch("type")
-      breed = animal.fetch("breed")
-      animals.push(Animal.new({:name => name, :gender => gender, :date_admitted => date_admitted, :type => type, :breed => breed}))
-    end
+    animals = self.all
     animals.sort_by {|animal| animal.name}
   end
 
   def self.sort_by_date
-    returned_animals = DB.exec("SELECT * FROM animals;")
-    animals = []
-    returned_animals.each do |animal|
-      name = animal.fetch("name")
-      gender = animal.fetch("gender")
-      date_admitted = animal.fetch("date_admitted")
-      type = animal.fetch("type")
-      breed = animal.fetch("breed")
-      animals.push(Animal.new({:name => name, :gender => gender, :date_admitted => date_admitted, :type => type, :breed => breed}))
-    end
+    animals = self.all
     animals.sort_by{|animal| animal.date_admitted}
   end
 end
