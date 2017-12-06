@@ -1,5 +1,6 @@
 class Animal
   attr_accessor(:name, :gender, :date_admitted, :type, :breed)
+  attr_reader(:id)
 
   def initialize(attributes)
     @name = attributes.fetch(:name)

@@ -1,0 +1,9 @@
+<h3>Here are all our animals listed by name</h3>
+
+<ul>
+  <% @animals.each do |animal| %>
+    <li><%= animal.name %></li>
+  <% end %>
+</ul>
+
+<p><a href="/">Return</a> to home page</p>

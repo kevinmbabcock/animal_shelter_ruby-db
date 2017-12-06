@@ -1,0 +1,21 @@
+<h3>Please fill out the form to adopt an animal</h3>
+
+<form action="/customers" method="post">
+  <div class="form-group">
+    <label class="form-label" for="customerName">Name:</label>
+    <input class="form-control" id="customerName" name="customerName" type="text" placeholder="Your Name" autofocus>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="customerPhone">Phone Number:</label>
+    <input class="form-control" id="customerPhone" name="customerPhone" type="text" placeholder="Phone" autofocus>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="customerType">What kind of animal are you looking for?</label>
+    <input class="form-control" id="customerType" name="customerType" type="text" placeholder="ex: dog, cat" autofocus>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="customerBreed">What breed are you looking for?</label>
+    <input class="form-control" id="customerBreed" name="customerBreed" type="text" placeholder="ex: siamese, golden retreiver" autofocus>
+  </div>
+  <button type="submit" class="btn-primary">Submit</button>
+</form>

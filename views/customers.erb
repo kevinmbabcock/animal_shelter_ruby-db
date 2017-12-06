@@ -1,0 +1,9 @@
+<h3>Here are all our customers listed by their breed preference</h3>
+
+<ul>
+  <% @customers.each do |customer| %>
+    <li><%= customer.name %>: <%= customer.breed_preference %></li>
+  <% end %>
+</ul>
+
+<p><a href="/">Return</a> to home page</p>
