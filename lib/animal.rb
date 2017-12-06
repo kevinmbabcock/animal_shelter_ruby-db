@@ -30,4 +30,18 @@ class Animal
   def ==(other_animal)
     (self.name.==(other_animal.name)).&(self.gender.==(other_animal.gender)).&(self.date_admitted.==(other_animal.date_admitted)).&(self.type.==(other_animal.type)).&(self.breed.==(other_animal.breed))
   end
+
+  def self.sort_by_breed
+    returned_animals = DB.exec("SELECT * FROM animals;")
+    animals = []
+    returned_animals.each do |animal|
+      name = animal.fetch("name")
+      gender = animal.fetch("gender")
+      date_admitted = animal.fetch("date_admitted")
+      type = animal.fetch("type")
+      breed = animal.fetch("breed")
+      animals.push(Animal.new({:name => name, :gender => gender, :date_admitted => date_admitted, :type => type, :breed => breed}))
+    end
+    animals.sort_by {|animal| animal.breed}
+  end
 end
