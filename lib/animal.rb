@@ -8,6 +8,7 @@ class Animal
     @date_admitted = attributes.fetch(:date_admitted)
     @type = attributes.fetch(:type)
     @breed = attributes.fetch(:breed)
+    @id = attributes.fetch(:id)
   end
 
   def self.all
@@ -19,13 +20,15 @@ class Animal
       date_admitted = animal.fetch("date_admitted")
       type = animal.fetch("type")
       breed = animal.fetch("breed")
-      animals.push(Animal.new({:name => name, :gender => gender, :date_admitted => date_admitted, :type => type, :breed => breed}))
+      id = animal.fetch("id").to_i
+      animals.push(Animal.new({:name => name, :gender => gender, :date_admitted => date_admitted, :type => type, :breed => breed, :id => id}))
     end
     animals
   end
 
   def save
-    DB.exec("INSERT INTO animals (name, gender, date_admitted, type, breed) VALUES ('#{@name}', '#{@gender}', '#{@date_admitted}', '#{@type}', '#{@breed}');")
+    result = DB.exec("INSERT INTO animals (name, gender, date_admitted, type, breed) VALUES ('#{@name}', '#{@gender}', '#{@date_admitted}', '#{@type}', '#{@breed}') RETURNING id;")
+    @id = result.first.fetch("id").to_i
   end
 
   def ==(other_animal)
